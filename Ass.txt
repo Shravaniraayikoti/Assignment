@@ -1,0 +1,80 @@
+SELECT * FROM test_schema.wc_players_main limit 10;
+/*
+Where
+And
+or
+in
+Between
+Group by (aggregation functions like sum,avg,min and max ect.,)
+Order by
+Having 
+join
+*/
+
+
+select distinct team from test_schema.wc_players_main;
+select distinct player,team from test_schema.wc_players_main
+where team in ('Suning','Team Liquid','Rogue')
+order by team desc;
+
+select * from test_schema.wc_champions
+where sum_total between 30 and 50;
+
+use test_schema;
+select * from wc_players_play_in;
+select * from wc_teams_play_in ;
+
+
+select p.player,p.team,t.wins,t.loses
+from wc_players_play_in p
+join wc_teams_play_in t
+on p.team=t.team ;
+
+select p.player,p.team,t.wins,t.loses
+from wc_players_play_in p
+left join wc_teams_play_in t
+on p.team=t.team ;
+
+select p.player,p.team,t.wins,t.loses
+from wc_players_play_in p
+right join wc_teams_play_in t
+on p.team=t.team ;
+
+select p.player,p.team,t.wins,t.loses
+from wc_players_play_in p
+join wc_teams_play_in t
+on p.team=t.team ;
+
+select * from test_schema.wc_players_play_in
+where team = 'Movistar R7';
+
+select position,avg(kills)
+from test_schema.wc_players_play_in
+group by position
+having avg(kills)>20;
+
+SELECT 
+AVG(assists) as assist_avg
+FROM wc_players_main;
+
+SELECT 
+MIN(assists) as assist_min
+FROM wc_players_main;
+
+
+SELECT 
+MAX(assists) as assist_max
+FROM wc_players_main;
+
+SELECT 
+SUM(assists) as assist_sumfifa_world_cup_matchesfifa_world_cup_matches
+FROM wc_players_main;
+
+SELECT * FROM test_schema.wc_players_main limit 10;
+
+SELECT  team, wins, player,winrate
+FROM wc_teams_play_in , wc_players_main ;
+
+select * from wc_teams_play_in ;
+
+
